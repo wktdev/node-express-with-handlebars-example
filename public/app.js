@@ -1,0 +1,4 @@
+$(function() {
+
+    $("#todo-field").focus();
+})
