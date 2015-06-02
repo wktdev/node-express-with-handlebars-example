@@ -106,7 +106,9 @@ app.get('/edit/:id', function(req, res) {
 app.post('/update/:id', function(req, res) {
 
 
-    console.log(req.params.id)
+    console.log(req.params.id);
+
+    console.log(req.body.task);
 
 
     /*    var todo = new Todo({
