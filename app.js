@@ -34,6 +34,23 @@ var Todo = mongoose.model('Todo', {
 
 
 
+
+//_______________________________________________________BEGIN Read ( render ) todos to page 
+app.get('/', function(req, res) {
+
+    Todo.find(function(err, toHBS) {
+        res.render('index', {
+            todos: toHBS
+        });
+    });
+});
+
+//_______________________________________________________END Read ( render ) todos to page
+
+
+
+
+
 //_______________________________________________________BEGIN Create todo and update page
 app.post('/', function(req, res) {
 
@@ -57,19 +74,6 @@ app.post('/', function(req, res) {
 
 
 
-
-
-//_______________________________________________________BEGIN Read ( render ) todos to page 
-app.get('/', function(req, res) {
-
-    Todo.find(function(err, toHBS) {
-        res.render('index', {
-            todos: toHBS
-        });
-    });
-});
-
-//_______________________________________________________END Read ( render ) todos to page
 
 
 

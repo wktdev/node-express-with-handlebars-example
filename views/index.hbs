@@ -24,7 +24,7 @@
 				{{#each todos}}
 		
 
-				<div>
+				<div class="todo">
 			
 			<p><a href="edit/{{this.id}}">{{this.task}}</a></p>
 			<p><a href="{{this._id}}">delete</a></p>
@@ -38,4 +38,16 @@
 		</div>
 	</body>
 	<!--______________________________________________________END APP-->
+
+	<style>
+
+.todo{
+	width:100px;
+	height:100px;
+	background-color:orange;
+	border-style:solid;
+}
+
+	</style>
+
 </html>
