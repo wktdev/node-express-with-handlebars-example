@@ -1,3 +1,5 @@
+//_______________________________________________________BEGIN setup
+
 var express = require('express');
 var path = require('path');
 var http = require('http');
@@ -31,7 +33,7 @@ var Todo = mongoose.model('Todo', {
     }
 })
 
-
+//_______________________________________________________END setup
 
 
 
@@ -46,9 +48,6 @@ app.get('/', function(req, res) {
 });
 
 //_______________________________________________________END Read ( render ) todos to page
-
-
-
 
 
 //_______________________________________________________BEGIN Create todo and update page
@@ -74,21 +73,12 @@ app.post('/', function(req, res) {
 
 
 
-
-
-
-
-
 //_______________________________________________________BEGIN Update todo
 
 
 
 
-app.get('/edit/:id', function(req, res) {
-
-    // console.log(req.params.id)
-
-
+app.get('/edit/:id/', function(req, res) {
 
     var id = req.params.id;
 
@@ -109,22 +99,17 @@ app.get('/edit/:id', function(req, res) {
 
 app.post('/update/:id', function(req, res) {
 
+    var id = req.params.id;
 
-    console.log(req.params.id);
-
-    console.log(req.body.task);
+    Todo.findById(id, function(err, todo) {
 
 
-    /*    var todo = new Todo({
-        task: req.body.task
-    }).save(function(err) {
-        //______________________________|BEGIN
-        Todo.find(function(err, toHBS) {
-            res.redirect("/")
-        });
-        //______________________________|END
+        todo.task = req.body.task
+        todo.save();
 
-    });*/
+        return res.redirect('/');
+
+    });
 
 
 })
@@ -144,7 +129,7 @@ app.post('/update/:id', function(req, res) {
 //_______________________________________________________BEGIN Delete and update the page
 
 
-app.get('/:id', function(req, res) {
+app.get('/delete/:id', function(req, res) {
     Todo.findById(req.params.id, function(err, todo) {
         if (!err) {
 
@@ -157,9 +142,11 @@ app.get('/:id', function(req, res) {
 })
 
 
-
-
 //_______________________________________________________END Delete and update the page
+
+
+
+
 
 
 
