@@ -37,7 +37,7 @@ var Todo = mongoose.model('Todo', {
 
 
 
-//_______________________________________________________BEGIN Read ( render ) todos to page 
+//_______________________________________________________BEGIN Read ( render ) todos to home page 
 app.get('/', function(req, res) {
 
     Todo.find(function(err, toHBS) {
@@ -47,7 +47,7 @@ app.get('/', function(req, res) {
     });
 });
 
-//_______________________________________________________END Read ( render ) todos to page
+//_______________________________________________________END Read ( render ) todos to home page
 
 
 //_______________________________________________________BEGIN Create todo and update page
@@ -68,7 +68,7 @@ app.post('/', function(req, res) {
 
 });
 
-//_______________________________________________________BEGIN Create todo and update page
+//_______________________________________________________END Create todo and update page
 
 
 
@@ -126,7 +126,7 @@ app.post('/update/:id', function(req, res) {
 
 
 
-//_______________________________________________________BEGIN Delete and update the page
+//_______________________________________________________BEGIN Delete todo and update the page
 
 
 app.get('/delete/:id', function(req, res) {
@@ -142,7 +142,7 @@ app.get('/delete/:id', function(req, res) {
 })
 
 
-//_______________________________________________________END Delete and update the page
+//_______________________________________________________END Delete todo and update the page
 
 
 
