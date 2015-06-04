@@ -6,42 +6,30 @@
 		<script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.0/jquery.js" charset="utf-8"></script>
 		<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.23/angular.min.js"></script>
 		<script src="http://livejs.com/live.js"></script>
-	
+		
 		<script type='text/javascript' src="/js/app.js"></script>
-				<link rel="stylesheet" href="/css/app.css">
-
+		<link rel="stylesheet" href="/css/app.css">
 	</head>
 	<!--______________________________________________________BEGIN APP-->
 	<body>
-
-
-
-<form method="post" action="/">
-    <input id="todo-field" type="text" name="task">
-    <input type="submit">
-</form>
-
+		<form method="post" action="/" >
+			<input id="todo-field" type="text" name="task">
+			<input type="submit">
+		</form>
 		<div>
 			<h1>Todos</h1>
 			<p>
 				{{#each todos}}
-		
-
+				
 				<div class="todo">
-			
-			<p><a href="edit/{{this.id}}/">{{this.task}}</a></p>
-			<p><a href="delete/{{this._id}}">delete</a></p>
-
-
+					
+					<p><a href="edit/{{this.id}}/">{{this.task}}</a></p>
+					<p><a href="delete/{{this._id}}">delete</a></p>
 				</div>
-
-
+				
 				{{/each}}
 			</p>
 		</div>
 	</body>
 	<!--______________________________________________________END APP-->
-
-
-
 </html>

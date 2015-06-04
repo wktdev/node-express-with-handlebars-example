@@ -40,9 +40,9 @@ var Todo = mongoose.model('Todo', {
 //_______________________________________________________BEGIN Read ( render ) todos to home page 
 app.get('/', function(req, res) {
 
-    Todo.find(function(err, toHBS) {
+    Todo.find(function(err, arrayOfItems) {
         res.render('index', {
-            todos: toHBS
+            todos: arrayOfItems
         });
     });
 });
@@ -58,22 +58,24 @@ app.post('/', function(req, res) {
     }).save(function(err) {
         //______________________________|BEGIN
         Todo.find(function(err, toHBS) {
-            res.render('index', {
-                todos: toHBS
-            });
+
+            todos: toHBS
+
         });
         //______________________________|END
+
+        res.redirect('/');
 
     });
 
 });
 
-//_______________________________________________________END Create todo and update page
+//________________________________________________________END Create todo and update page
 
 
 
 
-//_______________________________________________________BEGIN Update todo
+//________________________________________________________BEGIN Update todo
 
 
 
@@ -104,7 +106,7 @@ app.post('/update/:id', function(req, res) {
     Todo.findById(id, function(err, todo) {
 
 
-        todo.task = req.body.task
+        todo.task = req.body.updated_task
         todo.save();
 
         return res.redirect('/');
@@ -134,6 +136,8 @@ app.get('/delete/:id', function(req, res) {
         if (!err) {
 
             todo.remove();
+
+
         } else {
             return err
         }
